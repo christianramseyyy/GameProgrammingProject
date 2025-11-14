@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Player
+public class Player : MonoBehaviour 
 {
-    public float moveSpeed = 8f;
+    public float moveSpeed = 4f;
 
     public GameObject laserPrefab;
     public Transform firePoint;
@@ -14,7 +14,7 @@ public class Player
 
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -32,6 +32,11 @@ public class Player
     void Shoot()
     {
         nextFireTime = Time.time + fireRate;
-        //Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void FixedUpdate()
+    {
+        rb.linearVelocity = moveInput * moveSpeed;
     }
 }
