@@ -2,40 +2,59 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject purpleCometPrefab;
     public GameObject alienPrefab;
-    public GameObject ufoPrefab;
+
+    //public GameObject purpleCometPrefab;
+    //public GameObject alienPrefab;
+    //public GameObject ufoPrefab;
 
     public float spawnInterval = 1.5f;
+    public float minSpawnInterval = 0.4f;
+    public float maxSpawnRate = 8f;
+    public float difficultyIncreaseRate = 0.05f;
+    public float difficultyTimer;
 
     private float timer;
 
     private void Update()
     {
         timer += Time.deltaTime;
+        difficultyTimer += Time.deltaTime;
 
         if (timer >= spawnInterval)
         {
             SpawnEnemy();
             timer = 0f;
         }
+
+        if(difficultyTimer > 5)
+        {
+            increaseDifficulty();
+            difficultyTimer = 0f;
+        }
     }
 
     private void SpawnEnemy()
     {
-        int type = Random.Range(0, 3); // 0 = Comet, 1 = Alien, 2 = UFO
-        GameObject prefabToSpawn = null;
+        // bottom left
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
 
-        switch (type)
+        // top right
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        GameObject alien = (GameObject)Instantiate(alienPrefab);
+        alien.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+    }
+
+    private void increaseDifficulty()
+    {
+        spawnInterval -= difficultyIncreaseRate;
+
+        if(spawnInterval < minSpawnInterval)
         {
-            case 0: prefabToSpawn = purpleCometPrefab; break;
-            case 1: prefabToSpawn = alienPrefab; break;
-            case 2: prefabToSpawn = ufoPrefab; break;
+            spawnInterval = minSpawnInterval;
         }
 
-        float x = Random.Range(-3f, 3f);
-        Vector2 spawnPos = new Vector2(x, 6f);
-
-        Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
+        Debug.Log("Difficulty increased. New spawn interval: " + spawnInterval);
     }
 }

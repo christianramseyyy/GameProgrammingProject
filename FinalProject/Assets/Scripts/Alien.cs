@@ -2,39 +2,44 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
-    public float speed = 2f;
-    public float zigzagWidth = 2f;
-    public float zigzagFrequency = 3f;
-    public int scoreValue = 150;
+    public float speed;
 
     private float startX;
 
     private void Start()
     {
-        startX = transform.position.x;
+        speed = 2f;
     }
 
     private void Update()
     {
-        float xOffset = Mathf.Sin(Time.time * zigzagFrequency) * zigzagWidth;
-        transform.position = new Vector2(startX + xOffset, transform.position.y - speed * Time.deltaTime);
+        Vector2 position = transform.position;
 
-        if (transform.position.y < -6f)
-            Destroy(gameObject);
-    }
+        position = new Vector2 (position.x, position.y - speed * Time.deltaTime);
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        transform.position = position;
+
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0));
+
+        if(transform.position.y < min.y)
         {
-            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
-        else if (collision.CompareTag("PlayerLaser"))
-        {
-            Destroy(collision.gameObject);
-            ScoreManager.Instance.AddScore(scoreValue);
-            Destroy(gameObject);
-        }
+            
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        Destroy(collision.gameObject);
+    //        Destroy(gameObject);
+    //    }
+    //    else if (collision.CompareTag("PlayerLaser"))
+    //    {
+    //        Destroy(collision.gameObject);
+    //        ScoreManager.Instance.AddScore(scoreValue);
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

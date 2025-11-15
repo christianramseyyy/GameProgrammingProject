@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class UFO : MonoBehaviour
@@ -11,6 +12,7 @@ public class UFO : MonoBehaviour
 
     private float startX;
     private float nextFireTime;
+    private int direction = 1;
 
     private void Start()
     {
@@ -20,12 +22,16 @@ public class UFO : MonoBehaviour
 
     private void Update()
     {
-        float xOffset = Mathf.Sin(Time.time * speed) * moveDistance;
-        transform.position = new Vector2(startX + xOffset, transform.position.y);
+        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+
+        if (Mathf.Abs(transform.position.x - startX) >= moveDistance)
+        {
+            direction *= -1; 
+        }
 
         if (Time.time > nextFireTime)
         {
-            FireLaser();
+            //FireLaser();
             ScheduleNextShot();
         }
 
@@ -33,10 +39,10 @@ public class UFO : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void FireLaser()
-    {
-        Instantiate(enemyLaserPrefab, transform.position, Quaternion.identity);
-    }
+    //private void FireLaser()
+    //{
+    //    Instantiate(enemyLaserPrefab, transform.position, Quaternion.identity);
+    //}
 
     private void ScheduleNextShot()
     {

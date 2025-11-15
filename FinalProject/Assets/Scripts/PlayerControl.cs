@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public GameObject laserPos;
     public float fireRate = 0.25f;
 
-    private float nextFireTime = 0f;
+    //private float nextFireTime = 0f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
