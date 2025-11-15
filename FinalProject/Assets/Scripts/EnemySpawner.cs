@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -7,23 +8,27 @@ public class EnemySpawner : MonoBehaviour
     public GameObject ufoPrefab;
 
     public float spawnInterval = 1.5f;
+    public float startDelay = 2f;
 
-    private float timer;
-
-    private void Update()
+    private void Start()
     {
-        timer += Time.deltaTime;
+        StartCoroutine(SpawnLoop());
+    }
 
-        if (timer >= spawnInterval)
+    private IEnumerator SpawnLoop()
+    {
+        yield return new WaitForSeconds(startDelay);
+
+        while (true)
         {
             SpawnEnemy();
-            timer = 0f;
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 
     private void SpawnEnemy()
     {
-        int type = Random.Range(0, 3); // 0 = Comet, 1 = Alien, 2 = UFO
+        int type = Random.Range(0, 3);
         GameObject prefabToSpawn = null;
 
         switch (type)
