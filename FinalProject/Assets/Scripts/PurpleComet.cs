@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PurpleComet : MonoBehaviour
 {
-    public float speed = 3f;
+    public float speed = 5f;
     public int scoreValue = 100;
 
     void Update()

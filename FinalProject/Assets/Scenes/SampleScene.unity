@@ -450,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   alienPrefab: {fileID: 5354344382601219212, guid: 095ab53c974d85a47a8d9931a79178c3, type: 3}
   ufoPrefab: {fileID: 1259082938622348224, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
+  purpleCometPrefab: {fileID: 4012610746009151692, guid: c6e4a1c74231d3442a0346c46093f6b0, type: 3}
   spawnInterval: 1.5
   minSpawnInterval: 0.4
   maxSpawnRate: 8
