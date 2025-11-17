@@ -25,7 +25,7 @@ public class UFOGun : MonoBehaviour
 
             bullet.transform.position = transform.position;
 
-            Vector2 direction = Vector2.down;
+            Vector2 direction = player.transform.position - bullet.transform.position;
 
             bullet.GetComponent<UFOBullet>().SetDirection(direction);
         }
