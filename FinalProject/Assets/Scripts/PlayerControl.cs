@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour 
 {
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
             AudioSource.PlayClipAtPoint(damageSfx, transform.position);
 
             Destroy(gameObject);
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
