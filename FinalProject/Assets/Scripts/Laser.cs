@@ -26,11 +26,11 @@ public class Laser : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Enemy"))
+        if(collision.CompareTag("Alien") || collision.CompareTag("UFO"))
         {
-
+            Destroy(gameObject);
         }
     }
 }

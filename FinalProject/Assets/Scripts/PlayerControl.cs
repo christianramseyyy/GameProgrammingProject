@@ -15,9 +15,8 @@ public class Player : MonoBehaviour
     //Sound effects
     public AudioClip laserSfx;
     public AudioClip damageSfx;
-    private AudioSource audioSource;
 
-    private GameOver gameOver;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -47,12 +46,13 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Alien"))
+        if(collision.CompareTag("Alien") || collision.CompareTag("EnemyLaser") ||
+            collision.CompareTag("UFO"))
         {
             Debug.Log("Player collided with alien!");
-            audioSource.PlayOneShot(damageSfx);
+            AudioSource.PlayClipAtPoint(damageSfx, transform.position);
 
-            gameOver.RestartGame();
+            Destroy(gameObject);
         }
     }
 }
