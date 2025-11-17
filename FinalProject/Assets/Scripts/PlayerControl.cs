@@ -19,10 +19,17 @@ public class Player : MonoBehaviour
 
     private AudioSource audioSource;
 
+    // screen bounds
+    private Vector2 minBounds;
+    private Vector2 maxBounds;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+
+        minBounds = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        maxBounds = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
     }
 
     void Update()
@@ -36,13 +43,19 @@ public class Player : MonoBehaviour
             GameObject laser = (GameObject)Instantiate(laserPrefab);
             laser.transform.position = laserPos.transform.position;
             audioSource.PlayOneShot(laserSfx);
-        }
-
+        }        
     }
 
     void FixedUpdate()
     {
         rb.linearVelocity = moveInput * moveSpeed;
+
+        Vector3 pos = transform.position;
+
+        pos.x = Mathf.Clamp(pos.x, minBounds.x + 0.5f, maxBounds.x - 0.5f);
+        pos.y = Mathf.Clamp(pos.y, minBounds.y + 0.5f, maxBounds.y - 0.5f);
+
+        transform.position = pos;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
