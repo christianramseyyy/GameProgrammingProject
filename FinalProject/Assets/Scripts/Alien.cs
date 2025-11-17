@@ -3,6 +3,7 @@ using UnityEngine;
 public class Alien : MonoBehaviour
 {
     public float speed;
+    public int scoreValue = 50;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class Alien : MonoBehaviour
         if(collision.CompareTag("PlayerLaser"))
         {
             Destroy(gameObject);
+            ScoreManager.Instance.AddScore(scoreValue);
         }
     }
 }

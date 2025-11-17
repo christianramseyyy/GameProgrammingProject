@@ -7,6 +7,7 @@ public class UFO : MonoBehaviour
     public float horizontalSpeed = 1f;
     public float direction;
     public float minX, maxX;
+    public int scoreValue = 200;
 
     void Start()
     {
@@ -54,6 +55,7 @@ public class UFO : MonoBehaviour
         if (collision.CompareTag("PlayerLaser"))
         {
             Destroy(gameObject);
+            ScoreManager.Instance.AddScore(scoreValue);
         }
     }
 }

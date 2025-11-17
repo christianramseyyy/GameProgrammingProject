@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6197976046428015531}
   m_Layer: 0
   m_Name: Comet
-  m_TagString: PurpleComet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,4 +141,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PurpleComet
   speed: 5
-  scoreValue: 100
+  scoreValue: 150

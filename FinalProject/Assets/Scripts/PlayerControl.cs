@@ -48,11 +48,10 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Alien") || collision.CompareTag("EnemyLaser") ||
-            collision.CompareTag("UFO") || collision.CompareTag("PurpleComet"))
+            collision.CompareTag("UFO"))
         {
             Debug.Log("Player collided with alien!");
             AudioSource.PlayClipAtPoint(damageSfx, transform.position);
-            audioSource.PlayOneShot(damageSfx);
 
             Destroy(gameObject);
             SceneManager.LoadScene("GameOver");
