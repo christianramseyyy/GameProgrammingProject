@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     //Sound effects
     public AudioClip laserSfx;
+    public AudioClip damageSfx;
     private AudioSource audioSource;
 
     void Start()

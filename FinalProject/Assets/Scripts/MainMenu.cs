@@ -12,10 +12,6 @@ public class MainMenu : MonoBehaviour
     //Called by quit button
     public void QuitGame()
     {
-        Application.Quit();
-
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+        SceneManager.LoadScene("GameOver");
     }
 }

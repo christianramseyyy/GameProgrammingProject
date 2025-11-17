@@ -521,6 +521,7 @@ MonoBehaviour:
   laserPos: {fileID: 1673524373}
   fireRate: 0.25
   laserSfx: {fileID: 8300000, guid: 8a71e32b9f53c44eda3eafcb3b60135a, type: 3}
+  damageSfx: {fileID: 8300000, guid: 238b554abf5644c958162a7b81889bad, type: 3}
 --- !u!4 &1210906527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2328997803425614117, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
@@ -657,8 +658,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 125}
-  m_SizeDelta: {x: 75, y: 50}
+  m_AnchoredPosition: {x: 261.2044, y: 125}
+  m_SizeDelta: {x: 97.4088, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1386027897
 MonoBehaviour:
