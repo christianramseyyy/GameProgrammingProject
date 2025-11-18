@@ -7,9 +7,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject purpleCometPrefab;
 
     public float spawnInterval = 1.5f;
-    public float minSpawnInterval = 0.4f;
-    public float maxSpawnRate = 8f;
-    public float difficultyIncreaseRate = 0.05f;
+    public float minSpawnInterval = 0.3f;
+   
+    public float difficultyIncreaseRate = 0.08f;
     public float difficultyTimer;
 
     private float timer;

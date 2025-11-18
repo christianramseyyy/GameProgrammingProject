@@ -49,6 +49,9 @@ TagManager:
   - name: Background
     uniqueID: 2874876705
     locked: 0
+  - name: Explosions
+    uniqueID: 3351634355
+    locked: 0
   - name: Game
     uniqueID: 500783951
     locked: 0

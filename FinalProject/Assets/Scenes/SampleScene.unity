@@ -452,9 +452,8 @@ MonoBehaviour:
   ufoPrefab: {fileID: 1259082938622348224, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
   purpleCometPrefab: {fileID: 4012610746009151692, guid: c6e4a1c74231d3442a0346c46093f6b0, type: 3}
   spawnInterval: 1.5
-  minSpawnInterval: 0.4
-  maxSpawnRate: 8
-  difficultyIncreaseRate: 0.05
+  minSpawnInterval: 0.3
+  difficultyIncreaseRate: 0.08
   difficultyTimer: 0
 --- !u!1 &1386027895
 GameObject:
