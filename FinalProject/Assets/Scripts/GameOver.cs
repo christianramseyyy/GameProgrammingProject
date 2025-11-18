@@ -6,6 +6,7 @@ public class GameOver : MonoBehaviour
     //Called by restart button
     public void RestartGame()
     {
+        ScoreManager.Instance.ResetScore();
         SceneManager.LoadScene("MainMenu");
     }
 
