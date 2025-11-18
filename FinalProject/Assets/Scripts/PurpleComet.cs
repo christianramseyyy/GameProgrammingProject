@@ -16,12 +16,7 @@ public class PurpleComet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-        else if (collision.CompareTag("PlayerLaser"))
+        if (collision.CompareTag("PlayerLaser"))
         {
             Destroy(collision.gameObject);
             playExplosion();
