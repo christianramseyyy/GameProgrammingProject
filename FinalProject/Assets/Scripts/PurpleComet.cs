@@ -4,6 +4,7 @@ public class PurpleComet : MonoBehaviour
 {
     public float speed = 5f;
     public int scoreValue = 150;
+    public GameObject explosionPrefab;
 
     void Update()
     {
@@ -23,8 +24,15 @@ public class PurpleComet : MonoBehaviour
         else if (collision.CompareTag("PlayerLaser"))
         {
             Destroy(collision.gameObject);
+            playExplosion();
             ScoreManager.Instance.AddScore(scoreValue);
             Destroy(gameObject);
         }
+    }
+
+    void playExplosion()
+    {
+        GameObject explosion = (GameObject)Instantiate(explosionPrefab);
+        explosion.transform.position = transform.position;
     }
 }

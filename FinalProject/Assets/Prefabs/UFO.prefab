@@ -156,6 +156,8 @@ MonoBehaviour:
   direction: 0
   minX: 0
   maxX: 0
+  scoreValue: 200
+  explosionPrefab: {fileID: 4470822628119855302, guid: 249bb450adab641bcb32948cba65ac1c, type: 3}
 --- !u!1 &2961366552560878870
 GameObject:
   m_ObjectHideFlags: 0

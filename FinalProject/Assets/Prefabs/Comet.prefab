@@ -142,3 +142,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PurpleComet
   speed: 5
   scoreValue: 150
+  explosionPrefab: {fileID: 4470822628119855302, guid: 249bb450adab641bcb32948cba65ac1c, type: 3}

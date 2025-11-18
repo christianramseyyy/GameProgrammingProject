@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     private Vector2 minBounds;
     private Vector2 maxBounds;
 
+    // explosion prefab
+    public GameObject explosionPrefab;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -63,11 +66,18 @@ public class Player : MonoBehaviour
         if(collision.CompareTag("Alien") || collision.CompareTag("EnemyLaser") ||
             collision.CompareTag("UFO"))
         {
-            Debug.Log("Player collided with alien!");
+            // Debug.Log("Player collided with alien!");
             AudioSource.PlayClipAtPoint(damageSfx, transform.position);
 
             Destroy(gameObject);
+            playExplosion();
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    void playExplosion()
+    {
+        GameObject explosion = (GameObject)Instantiate(explosionPrefab);
+        explosion.transform.position = transform.position;
     }
 }

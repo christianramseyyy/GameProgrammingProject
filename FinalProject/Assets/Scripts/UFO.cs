@@ -8,6 +8,7 @@ public class UFO : MonoBehaviour
     public float direction;
     public float minX, maxX;
     public int scoreValue = 200;
+    public GameObject explosionPrefab;
 
     void Start()
     {
@@ -55,7 +56,14 @@ public class UFO : MonoBehaviour
         if (collision.CompareTag("PlayerLaser"))
         {
             Destroy(gameObject);
+            playExplosion();
             ScoreManager.Instance.AddScore(scoreValue);
         }
+    }
+
+    void playExplosion()
+    {
+        GameObject explosion = (GameObject)Instantiate(explosionPrefab);
+        explosion.transform.position = transform.position;
     }
 }

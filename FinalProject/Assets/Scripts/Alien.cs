@@ -4,6 +4,7 @@ public class Alien : MonoBehaviour
 {
     public float speed;
     public int scoreValue = 50;
+    public GameObject explosionPrefab;
 
     private void Start()
     {
@@ -32,7 +33,14 @@ public class Alien : MonoBehaviour
         if(collision.CompareTag("PlayerLaser"))
         {
             Destroy(gameObject);
+            playExplosion();
             ScoreManager.Instance.AddScore(scoreValue);
         }
+    }
+
+    void playExplosion()
+    {
+        GameObject explosion = (GameObject)Instantiate(explosionPrefab);
+        explosion.transform.position = transform.position;
     }
 }
